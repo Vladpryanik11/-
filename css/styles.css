@@ -425,11 +425,13 @@ section {
   pointer-events: none;
 }
 
+/* the photo used to sit in its own grid column beside the copy; it now
+   overlaps the copy block instead (a "text behind photo" composition), so
+   .hero-grid is just a relative anchor and .hero-photo-wrap is positioned
+   absolutely on top of it — see .hero-photo-wrap below for the placement
+   math and js/main.js's cursor-parallax comment for why it stays a single
+   transformable unit */
 .hero-grid {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: clamp(32px, 6vw, 72px);
-  align-items: center;
   position: relative;
   z-index: 1;
 }
@@ -437,6 +439,14 @@ section {
 .hero-copy,
 .hero-photo-wrap {
   min-width: 0;
+}
+
+/* keeps the same effective text column width the overlap math below was
+   tuned against, regardless of the grid tracks that used to define it */
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
 }
 
 .hero-copy .eyebrow {
@@ -498,11 +508,28 @@ section {
   color: var(--ice-navy);
 }
 
-/* Photo stage */
+/* Photo stage — deliberately overlapping the headline (a "text behind
+   photo" composition, MILAR-style): the photo is a real alpha cutout, so
+   only its opaque pixels (hair/face/shoulders) actually hide text behind
+   it — the transparent margins let the headline show straight through.
+   top/left below are tuned against the measured line-2 ("МАРКЕТОЛОГ")
+   overflow so the head clips its tail letters while the paragraph/button
+   row underneath stays completely clear; see .hero-photo's crop comment
+   for the other half of that math. */
 .hero-photo-wrap {
-  position: relative;
+  /* one size variable drives top/left/height together (below and in
+     .hero-photo) so the overlap stays proportional — and therefore stays
+     clear of .hero-text/.hero-actions — across the whole desktop width
+     range, not just the ~1280px reference it was tuned against. Anchoring
+     left off .hero-copy's fixed 560px + var(--pad-inline) (rather than an
+     independent vw value) is what keeps it locked to the actual text
+     column instead of drifting apart from it at other viewport widths. */
+  --photo-h: clamp(260px, 31vw, 420px);
+  position: absolute;
+  top: calc(var(--photo-h) * 0.15);
+  left: calc(var(--pad-inline) + 560px - var(--photo-h) * 0.52);
+  z-index: 5;
   width: fit-content;
-  margin-inline: auto;
   display: flex;
   justify-content: center;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -542,8 +569,8 @@ section {
 /* handwritten accent line, top-right of the photo stage */
 .hero-script {
   position: absolute;
-  top: -46px;
-  right: 4%;
+  top: -38px;
+  right: -2%;
   z-index: 3;
   font-family: "Marck Script", cursive;
   font-size: 1.35rem;
@@ -558,21 +585,31 @@ section {
    silhouette itself is the visual edge: no card wrapper, no box-shadow — a
    drop-shadow filter follows the actual alpha edges instead, and the blurred
    colour blobs behind it (on .hero-photo-wrap) now show straight through the
-   transparent margins instead of being blocked by an opaque photo rectangle */
+   transparent margins instead of being blocked by an opaque photo rectangle.
+   specialist-3.png is a bust crop that flares into wide crossed arms at the
+   very bottom (the source's opaque silhouette reaches almost to its own left
+   edge below ~70% of its height) — left uncropped, that flare would reach far
+   enough left (at the wrap's text-overlapping position) to cover the
+   paragraph/buttons below the headline. .hero-photo crops that flare off by
+   only ever showing the top 65% of the source frame (overflow:hidden + the
+   img sized taller than the box and top-aligned), which keeps the visible
+   silhouette's left edge comfortably right of the body copy at every row. */
 .hero-photo {
   position: relative;
   z-index: 2;
-  height: clamp(420px, 42vw, 600px);
+  height: var(--photo-h);
+  overflow: hidden;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .hero-photo img {
   position: relative;
-  height: 100%;
+  height: calc(var(--photo-h) / 0.65);
   width: auto;
   max-width: none;
-  transform: rotate(-1.1deg);
+  transform: rotate(-1.1deg) scale(1.02);
   filter:
     drop-shadow(0 2px 2px rgba(18, 36, 77, 0.14))
     drop-shadow(0 26px 34px rgba(18, 36, 77, 0.22))
@@ -641,11 +678,18 @@ section {
   color: var(--ice-blue-muted);
 }
 
-.hgc-1 { top: -6%; left: -82px; --rot: -7deg; z-index: 1; animation-delay: 0s; }
-.hgc-2 { top: -4%; right: -96px; --rot: 6deg; z-index: 3; animation-delay: 1.2s; }
-.hgc-3 { bottom: 12%; left: -88px; --rot: -6deg; z-index: 3; animation-delay: 2.4s; }
-.hgc-4 { bottom: -4%; right: -88px; --rot: 8deg; z-index: 1; animation-delay: 3.6s; }
-.hgc-5 { top: 36%; right: -128px; --rot: 4deg; z-index: 3; animation-delay: 4.8s; }
+/* specialist-3.png overlaps the headline on its left side (see
+   .hero-photo-wrap), so none of the five cards reach out that way anymore —
+   a solid glass card there would block letters outright, unlike the photo's
+   alpha edge which only hides what's actually opaque. All five now wrap the
+   photo's top/right/bottom instead, still floating in front of and behind
+   it (mixed z-index, per the original design) to read as an orbit rather
+   than a one-sided row. */
+.hgc-1 { top: -9%; right: 40%; --rot: -6deg; z-index: 1; animation-delay: 0s; }
+.hgc-2 { top: 3%; right: -17%; --rot: 6deg; z-index: 3; animation-delay: 1.2s; }
+.hgc-3 { top: 72%; right: -6%; --rot: -5deg; z-index: 3; animation-delay: 2.4s; }
+.hgc-4 { top: 78%; right: -24%; --rot: 8deg; z-index: 1; animation-delay: 3.6s; }
+.hgc-5 { top: 34%; right: -19%; --rot: 4deg; z-index: 3; animation-delay: 4.8s; }
 
 @keyframes heroCardFloat {
   0%, 100% { transform: translateY(0) rotate(var(--rot)); }
@@ -736,12 +780,33 @@ section {
 }
 
 @media (max-width: 900px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
+  /* the desktop composition overlaps the photo onto the headline and crops
+     its bottom flare to protect the copy underneath — both only make sense
+     next to a wide text column. Below 900px .hero-copy is full-width and
+     stacked above the photo already (no shared space to overlap), so the
+     simplest, safest fallback is: cards/script hidden (as before) and the
+     photo un-overlapped, uncropped and centered under the copy. */
+  .hero-copy {
+    max-width: none;
   }
   .hero-glass-card,
   .hero-script {
     display: none;
+  }
+  .hero-photo-wrap {
+    position: relative;
+    top: auto;
+    left: auto;
+    z-index: auto;
+    margin: 32px auto 0;
+  }
+  .hero-photo {
+    height: clamp(320px, 78vw, 460px);
+    overflow: visible;
+    align-items: flex-end;
+  }
+  .hero-photo img {
+    height: 100%;
   }
   .hero-bottom-row {
     justify-content: flex-start;
