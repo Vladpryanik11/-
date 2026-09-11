@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Портфолио — примеры проектов по маркетингу, SMM, видео и IT | Маркетолог</title>
+<meta name="description" content="Примеры проектов по категориям: комплексный маркетинг, реклама, SMM, видеопродакшн и IT — формат подачи кейсов продвижения бизнеса.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header" id="siteHeader">
+  <nav class="nav-pill glass">
+    <a href="index.html" class="logo"><span class="logo-dot"></span>Маркетолог</a>
+    <div class="nav-links">
+      <a href="services.html">Услуги</a>
+      <a href="portfolio.html" aria-current="page">Портфолио</a>
+      <a href="blog.html">Блог</a>
+      <a href="contact.html">Контакты</a>
+    </div>
+    <a href="contact.html" class="btn btn-primary nav-cta">Обсудить проект</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Открыть меню">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-nav glass" id="mobileNav">
+    <a href="services.html">Услуги</a>
+    <a href="portfolio.html" aria-current="page">Портфолио</a>
+    <a href="blog.html">Блог</a>
+    <a href="contact.html">Контакты</a>
+    <a href="contact.html" class="btn btn-primary mobile-nav-cta">Обсудить проект</a>
+  </div>
+</header>
+
+<!-- ================= PORTFOLIO ================= -->
+<section class="portfolio page-top" id="portfolio">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow on-dark">Портфолио</span>
+      <h2 class="section-title">Проекты по категориям</h2>
+      <p class="section-lede">Примеры оформления по направлениям — карточки ниже иллюстрируют формат подачи проектов.</p>
+    </div>
+
+    <div class="portfolio-tabs" id="portfolioTabs">
+      <button class="tab-btn active" data-filter="all">Все</button>
+      <button class="tab-btn" data-filter="complex">Комплексный маркетинг</button>
+      <button class="tab-btn" data-filter="marketing">Маркетинг</button>
+      <button class="tab-btn" data-filter="smm">SMM</button>
+      <button class="tab-btn" data-filter="video">Видеопродакшн</button>
+      <button class="tab-btn" data-filter="it">IT</button>
+    </div>
+
+    <div class="portfolio-grid" id="portfolioGrid">
+      <article class="case-card glass-dark" data-category="marketing">
+        <div class="case-thumb thumb-1"><span class="case-tag">Маркетинг</span></div>
+        <div class="case-body">
+          <h3>Интернет-магазин мебели</h3>
+          <p>Настройка поисковых и товарных кампаний в Яндекс.Директ, структура по категориям каталога.</p>
+        </div>
+      </article>
+
+      <article class="case-card glass-dark" data-category="it">
+        <div class="case-thumb thumb-2"><span class="case-tag">IT</span></div>
+        <div class="case-body">
+          <h3>Лендинг для сервиса ремонта</h3>
+          <p>Одностраничный сайт с акцентом на заявку и понятную структуру услуг.</p>
+        </div>
+      </article>
+
+      <article class="case-card glass-dark" data-category="smm">
+        <div class="case-thumb thumb-3"><span class="case-tag">SMM</span></div>
+        <div class="case-body">
+          <h3>Онлайн-школа</h3>
+          <p>Подбор тематических каналов и форматов объявлений для продвижения в Telegram.</p>
+        </div>
+      </article>
+
+      <article class="case-card glass-dark" data-category="marketing">
+        <div class="case-thumb thumb-4"><span class="case-tag">Маркетинг</span></div>
+        <div class="case-body">
+          <h3>B2B-каталог оборудования</h3>
+          <p>Техническая оптимизация, структура разделов и семантическое ядро для SEO.</p>
+        </div>
+      </article>
+
+      <article class="case-card glass-dark" data-category="complex">
+        <div class="case-thumb thumb-5"><span class="case-tag">Комплексный маркетинг</span></div>
+        <div class="case-body">
+          <h3>Сеть кофеен</h3>
+          <p>Приоритизация каналов и медиаплан для выхода в новых районах.</p>
+        </div>
+      </article>
+
+      <article class="case-card glass-dark" data-category="marketing">
+        <div class="case-thumb thumb-6"><span class="case-tag">Маркетинг</span></div>
+        <div class="case-body">
+          <h3>Клиника эстетической медицины</h3>
+          <p>РСЯ и ретаргетинг с учётом сезонности спроса на процедуры.</p>
+        </div>
+      </article>
+    </div>
+
+    <p class="portfolio-empty" id="portfolioEmpty" hidden>Кейсы этой категории пока готовятся — здесь появятся примеры по мере новых проектов. А пока загляните в другие категории.</p>
+
+    <p class="case-note">Кейсы приведены как примеры формата и оформления проектов. Актуальные результаты и детали обсуждаются индивидуально.</p>
+
+    <div class="section-cta reveal" style="margin-top: clamp(32px, 5vw, 48px);">
+      <a href="contact.html" class="btn btn-outline-light">Обсудить проект</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container footer-row">
+    <a href="index.html" class="logo"><span class="logo-dot"></span>Маркетолог</a>
+    <div class="footer-links">
+      <a href="services.html">Услуги</a>
+      <a href="portfolio.html" aria-current="page">Портфолио</a>
+      <a href="blog.html">Блог</a>
+      <a href="contact.html">Контакты</a>
+    </div>
+    <span>&copy; 2026</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

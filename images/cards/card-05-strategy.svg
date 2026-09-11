@@ -1,0 +1,43 @@
+<svg viewBox="0 0 480 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="backdrop" cx="45%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#DCEAFF" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#DCEAFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="faceLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3FAFF" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#5C90E8" stop-opacity="0.75"/>
+    </linearGradient>
+    <linearGradient id="faceRight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8FB8FF" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#1B3D9E" stop-opacity="0.92"/>
+    </linearGradient>
+    <linearGradient id="faceFront" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#CBE0FF" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#3560D6" stop-opacity="0.85"/>
+    </linearGradient>
+    <filter id="blur70" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="35"/></filter>
+    <filter id="blur20" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="14"/></filter>
+    <filter id="shadow" x="-80%" y="-80%" width="260%" height="260%">
+      <feDropShadow dx="0" dy="28" stdDeviation="26" flood-color="#0F296B" flood-opacity="0.32"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="240" cy="330" rx="260" ry="280" fill="url(#backdrop)" filter="url(#blur70)"/>
+
+  <g filter="url(#shadow)">
+    <!-- three facets forming a faceted crystal mountain peak -->
+    <polygon points="240,120 130,460 240,420" fill="url(#faceLeft)" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="1.5"/>
+    <polygon points="240,120 350,460 240,420" fill="url(#faceRight)" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="1.5"/>
+    <polygon points="240,120 240,420 300,470 190,470 " fill="url(#faceFront)" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="1.5"/>
+  </g>
+
+  <!-- secondary smaller peak, offset behind, for depth -->
+  <polygon points="350,220 300,440 400,440" fill="url(#faceRight)" opacity="0.55" filter="url(#blur20)"/>
+
+  <!-- soft mist at the base -->
+  <ellipse cx="240" cy="470" rx="170" ry="34" fill="#FFFFFF" opacity="0.5" filter="url(#blur70)"/>
+
+  <!-- specular glint on the front facet edge -->
+  <polygon points="238,140 246,140 232,400 224,398" fill="#FFFFFF" opacity="0.6" filter="url(#blur20)"/>
+</svg>

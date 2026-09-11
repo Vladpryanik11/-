@@ -1,0 +1,44 @@
+<svg viewBox="0 0 480 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="backdrop" cx="35%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#DCEAFF" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#DCEAFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EBF6FF" stop-opacity="0.55"/>
+      <stop offset="40%" stop-color="#7FB0FF" stop-opacity="0.78"/>
+      <stop offset="100%" stop-color="#2652CC" stop-opacity="0.92"/>
+    </linearGradient>
+    <radialGradient id="cap" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#F6FBFF" stop-opacity="0.97"/>
+      <stop offset="100%" stop-color="#8CBBFF" stop-opacity="0.55"/>
+    </radialGradient>
+    <linearGradient id="streak" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.55"/>
+    </linearGradient>
+    <radialGradient id="bubble" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#E6F2FF" stop-opacity="0.88"/>
+      <stop offset="100%" stop-color="#5A8CEB" stop-opacity="0.35"/>
+    </radialGradient>
+    <filter id="blur70" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="35"/></filter>
+    <filter id="blur10" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="5"/></filter>
+    <filter id="shadow" x="-80%" y="-80%" width="260%" height="260%">
+      <feDropShadow dx="8" dy="26" stdDeviation="22" flood-color="#0F296B" flood-opacity="0.32"/>
+      <feDropShadow dx="3" dy="8" stdDeviation="6" flood-color="#0F296B" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="235" cy="300" rx="250" ry="280" fill="url(#backdrop)" filter="url(#blur70)"/>
+
+  <g transform="rotate(-8 240 300)" filter="url(#shadow)">
+    <rect x="140" y="100" width="200" height="420" rx="100" fill="url(#body)" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="1.5"/>
+  </g>
+  <g transform="rotate(-8 240 300)">
+    <ellipse cx="240" cy="102" rx="100" ry="28" fill="url(#cap)" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="1.5"/>
+    <rect x="276" y="140" width="28" height="320" rx="14" fill="url(#streak)" filter="url(#blur10)"/>
+  </g>
+
+  <circle cx="118" cy="458" r="28" fill="url(#bubble)"/>
+</svg>

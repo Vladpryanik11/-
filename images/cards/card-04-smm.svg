@@ -1,0 +1,39 @@
+<svg viewBox="0 0 480 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="backdrop" cx="45%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#DCEAFF" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#DCEAFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sphereBig" cx="32%" cy="26%" r="75%">
+      <stop offset="0%" stop-color="#F5FAFF" stop-opacity="0.95"/>
+      <stop offset="50%" stop-color="#6FA4F5" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#1E45B8" stop-opacity="0.88"/>
+    </radialGradient>
+    <radialGradient id="sphereMed" cx="32%" cy="26%" r="75%">
+      <stop offset="0%" stop-color="#F5FAFF" stop-opacity="0.95"/>
+      <stop offset="50%" stop-color="#86B6FF" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#3560D6" stop-opacity="0.82"/>
+    </radialGradient>
+    <radialGradient id="sphereSmall" cx="32%" cy="26%" r="75%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#7FAEFF" stop-opacity="0.55"/>
+    </radialGradient>
+    <filter id="blur70" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="35"/></filter>
+    <filter id="shadowBig" x="-80%" y="-80%" width="260%" height="260%">
+      <feDropShadow dx="0" dy="26" stdDeviation="24" flood-color="#0F296B" flood-opacity="0.3"/>
+    </filter>
+    <filter id="shadowMed" x="-80%" y="-80%" width="260%" height="260%">
+      <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#0F296B" flood-opacity="0.24"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="240" cy="320" rx="260" ry="280" fill="url(#backdrop)" filter="url(#blur70)"/>
+
+  <circle cx="200" cy="380" r="150" fill="url(#sphereBig)" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="1.5" filter="url(#shadowBig)"/>
+  <circle cx="330" cy="300" r="98" fill="url(#sphereMed)" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="1.5" filter="url(#shadowMed)"/>
+  <circle cx="150" cy="210" r="62" fill="url(#sphereMed)" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="1.5" filter="url(#shadowMed)"/>
+  <circle cx="330" cy="440" r="40" fill="url(#sphereSmall)"/>
+  <circle cx="110" cy="330" r="30" fill="url(#sphereSmall)"/>
+
+  <ellipse cx="150" cy="320" rx="42" ry="24" fill="#FFFFFF" opacity="0.55" filter="url(#blur70)"/>
+</svg>
