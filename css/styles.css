@@ -682,13 +682,13 @@ section {
    .hero-photo-wrap), so none of the five cards reach out that way anymore —
    a solid glass card there would block letters outright, unlike the photo's
    alpha edge which only hides what's actually opaque. All five now wrap the
-   photo's top/right/bottom instead, still floating in front of and behind
-   it (mixed z-index, per the original design) to read as an orbit rather
-   than a one-sided row. */
-.hgc-1 { top: -9%; right: 40%; --rot: -6deg; z-index: 1; animation-delay: 0s; }
+   photo's top/right/bottom instead, all in front of the photo (z-index 3 >
+   .hero-photo's 2) so no card gets hidden behind its opaque area; among
+   the cards themselves, source order settles any remaining overlap. */
+.hgc-1 { top: -9%; right: 40%; --rot: -6deg; z-index: 3; animation-delay: 0s; }
 .hgc-2 { top: 3%; right: -17%; --rot: 6deg; z-index: 3; animation-delay: 1.2s; }
 .hgc-3 { top: 72%; right: -6%; --rot: -5deg; z-index: 3; animation-delay: 2.4s; }
-.hgc-4 { top: 78%; right: -24%; --rot: 8deg; z-index: 1; animation-delay: 3.6s; }
+.hgc-4 { top: 78%; right: -24%; --rot: 8deg; z-index: 3; animation-delay: 3.6s; }
 .hgc-5 { top: 34%; right: -19%; --rot: 4deg; z-index: 3; animation-delay: 4.8s; }
 
 @keyframes heroCardFloat {
